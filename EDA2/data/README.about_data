@@ -1,0 +1,122 @@
+----------------------------------------------------------------------------------------------------
+> str(SCC)
+'data.frame':	11717 obs. of  15 variables:
+ $ SCC                : Factor w/ 11717 levels "10100101","10100102",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ Data.Category      : Factor w/ 6 levels "Biogenic","Event",..: 6 6 6 6 6 6 6 6 6 6 ...
+ $ Short.Name         : Factor w/ 11238 levels "","2,4-D Salts and Esters Prod /Process Vents, 2,4-D Recovery: Filtration",..: 3283 3284 3293 3291 3290 3294 3295 3296 3292 3289 ...
+ $ EI.Sector          : Factor w/ 59 levels "Agriculture - Crops & Livestock Dust",..: 18 18 18 18 18 18 18 18 18 18 ...
+ $ Option.Group       : Factor w/ 25 levels "","C/I Kerosene",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ Option.Set         : Factor w/ 18 levels "","A","B","B1A",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ SCC.Level.One      : Factor w/ 17 levels "Brick Kilns",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ SCC.Level.Two      : Factor w/ 146 levels "","Agricultural Chemicals Production",..: 32 32 32 32 32 32 32 32 32 32 ...
+ $ SCC.Level.Three    : Factor w/ 1061 levels "","100% Biosolids (e.g., sewage sludge, manure, mixtures of these matls)",..: 88 88 156 156 156 156 156 156 156 156 ...
+ $ SCC.Level.Four     : Factor w/ 6084 levels "","(NH4)2 SO4 Acid Bath System and Evaporator",..: 4455 5583 4466 4458 1341 5246 5584 5983 4461 776 ...
+ $ Map.To             : num  NA NA NA NA NA NA NA NA NA NA ...
+ $ Last.Inventory.Year: int  NA NA NA NA NA NA NA NA NA NA ...
+ $ Created_Date       : Factor w/ 57 levels "","1/27/2000 0:00:00",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ Revised_Date       : Factor w/ 44 levels "","1/27/2000 0:00:00",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ Usage.Notes        : Factor w/ 21 levels ""," ","includes bleaching towers, washer hoods, filtrate tanks, vacuum pump exhausts",..: 1 1 1 1 1 1 1 1 1 1 ...
+
+Data.Category : Biogenic Event Nonpoint Nonroad Onroad  Point
+
+----------------------------------------------------------------------------------------------------
+> str(NEI)
+'data.frame':	6497651 obs. of  6 variables:
+ $ fips     : chr  "09001" "09001" "09001" "09001" ...
+ $ SCC      : chr  "10100401" "10100404" "10100501" "10200401" ...
+ $ Pollutant: chr  "PM25-PRI" "PM25-PRI" "PM25-PRI" "PM25-PRI" ...
+ $ Emissions: num  15.714 234.178 0.128 2.036 0.388 ...
+ $ type     : chr  "POINT" "POINT" "POINT" "POINT" ...
+ $ year     : int  1999 1999 1999 1999 1999 1999 1999 1999 1999 1999 ...
+
+fips      : (3263 values)  
+SCC       : (5386 values)
+Pollutant : PM25-PRI  (all the same)
+Emissions : n/a
+type      : NON-ROAD NONPOINT ON-ROAD POINT
+year      : 1999 2002 2005 2008  (1108469 1698677 1713850 1976655 entries respectively)
+
+         Ndata    E = 0      mean      sd          0%       10%       20%       30%       40%       50%       60%       70%       80%       90%     98%    100% 
+ 1999  1108469  224620   8.296628  122.4031    0.001     0.010     0.013     0.030     0.042     0.080     0.140     0.280     0.680     3.000   59.56   66696.32
+ 2002  1698677   10201   3.337791  513.2672   1.96e-13   0.0000682 0.000316  0.000998  0.00276   0.007389  0.01      0.05      0.14      0.63    14.69  646952.0
+ 2005  1713850    8844   3.199228   83.9437   1.96e-13   0.0000647 0.0003034 0.000963  0.002631  0.006910  0.01      0.04      0.13      0.6     15.78   58896.1
+ 2008  1976655   84829   1.831144   40.6639   3.7e-19    0.0000697 0.0003243 0.000979  0.002535  0.006521  0.0166    0.0421    0.116     0.498    8.75   20799.7
+
+subsetting at <98%
+          mean      sd      >98%
+ 1999   1.46978   5.7332    17677 
+ 2002   0.29794   1.2289    33770
+ 2005   0.30296   1.2992    34100
+ 2008   0.20668   0.7746    37836
+
+         fips        SCC Pollutant Emissions     type year
+ 1609175 02290 2810001000  PM25-PRI  66696.32 NONPOINT 1999
+
+ 4685317 02290 2810001000  PM25-PRI 646952    NONPOINT 2002
+
+10974099 16049 2810090000  PM25-PRI   58896.1 NONPOINT 2005
+
+16631141 85004 2280003200  PM25-PRI   20799.7 NONPOINT 2008
+
+----------------------------------------------------------------------------------------------------
+Baltimore City     fips = 24510 (2096 entries)
+Los Angeles County fips = 06037 (9320 entries)
+----------------------------------------------------------------------------------------------------
+
+> ddply(NEI, .(year), summarize, max(Emissions))
+  year       ..1
+1 1999  66696.32
+2 2002 646951.97
+3 2005  58896.10
+4 2008  20799.70
+
+> ddply(NEI, .(year), summarize, median(Emissions))
+  year         ..1
+1 1999 0.040000000
+2 2002 0.007164684
+3 2005 0.006741885
+4 2008 0.005273130
+
+> em_mean <- ddply(NEI, .(year), summarize, mean(Emissions))
+> em_mean
+  year      ..1
+1 1999 6.615401
+2 2002 3.317747
+3 2005 3.182719
+4 2008 1.752560
+
+> em_sd <- ddply(NEI, .(year), summarize, sd(Emissions))
+> em_sd
+  year       ..1
+1 1999 109.35074
+2 2002 511.72379
+3 2005  83.72712
+4 2008  39.78356
+
+
+> ddply(NEI, .(year), summarize, summary(Emissions))
+   year      ..1
+1  1999      0.0
+2  1999      0.0
+3  1999      0.0
+4  1999      6.6
+5  1999      0.3
+6  1999  66700.0
+7  2002      0.0
+8  2002      0.0
+9  2002      0.0
+10 2002      3.3
+11 2002      0.1
+12 2002 647000.0
+13 2005      0.0
+14 2005      0.0
+15 2005      0.0
+16 2005      3.2
+17 2005      0.1
+18 2005  58900.0
+19 2008      0.0
+20 2008      0.0
+21 2008      0.0
+22 2008      1.8
+23 2008      0.1
+24 2008  20800.0

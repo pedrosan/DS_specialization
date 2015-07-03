@@ -1,0 +1,25 @@
+ 01   ""
+ 02   C/I Kerosene
+ 03   Cattle
+ 04   Commercial
+ 05   Construction
+ 06   Consumer/Commercial
+ 07   Dry Cleaning
+ 08   Goat
+ 09   Machinery
+ 10   Open Burning Leaf
+ 11   P and P Product Tran
+ 12   Paved Roads
+ 13   Poultry
+ 14   RWC_Fireplace
+ 15   RWC_Furnace_cordwood
+ 16   RWC_Furnace_pellet
+ 17   RWC_Hydronic
+ 18   RWC_StoveFreeStand
+ 19   RWC_StoveInserts
+ 20   RWC_StovePellet
+ 21   Stage 1 Gas
+ 22   Stage 2 Gas
+ 23   Underground Tank Gas
+ 24   Unpaved Roads
+ 25   WW Treatment

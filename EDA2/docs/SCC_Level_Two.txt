@@ -1,0 +1,146 @@
+ 001   ""
+ 002   Agricultural Chemicals Production
+ 003   Agricultural Field Burning - whole field set on fire
+ 004   Agriculture Production - Crops
+ 005   Agriculture Production - Crops - as Event
+ 006   Agriculture Production - Crops - as nonpoint
+ 007   Agriculture Production - Livestock
+ 008   Aircraft
+ 009   All Solvent User Categories
+ 010   Automotive Repair Shops
+ 011   Biogenic
+ 012   Border Crossings
+ 013   Brick Kilns
+ 014   Building Construction
+ 015   Bulk Materials Storage
+ 016   Bulk Materials Transport
+ 017   Catastrophic/Accidental Releases
+ 018   Cellulose-based Resins
+ 019   Chemical Manufacturing
+ 020   Chemical Manufacturing: SIC 28
+ 021   CNG
+ 022   Commercial/Institutional
+ 023   Composting
+ 024   Construction: SIC 15 - 17
+ 025   Consumer Product Manufacturing Facilities
+ 026   Cooling Tower
+ 027   Cooling Towers
+ 028   Degreasing
+ 029   Domestic Ammonia
+ 030   Domestic Animals Waste Emissions
+ 031   Dry Cleaning
+ 032   Electric Generation
+ 033   Electric Utility
+ 034   Electrical Equipment
+ 035   Engine Testing
+ 036   Fabricated Metal Products
+ 037   Fabricated Metals: SIC 34
+ 038   Fibers Production Processes
+ 039   Fixed Wing Aircraft L & TO Exhaust
+ 040   Fluorescent Lamp Breakage
+ 041   Food and Agricultural Processes
+ 042   Food and Agriculture
+ 043   Food and Kindred Products: SIC 20
+ 044   Fugitive Emissions
+ 045   Geogenic
+ 046   Graphic Arts
+ 047   Health Services
+ 048   Highway Vehicles - Diesel
+ 049   Highway Vehicles - Gasoline
+ 050   holding scc
+ 051   In-process Fuel Use
+ 052   Industrial
+ 053   Industrial Processes: NEC
+ 054   Industrial Refrigeration
+ 055   Inorganic Chemical Storage
+ 056   Inorganic Chemical Transport
+ 057   Inorganic Chemicals Manufacturing
+ 058   Laboratories
+ 059   Landfills
+ 060   Leaking Underground Storage Tanks
+ 061   Leather and Leather Products
+ 062   LPG
+ 063   LPG Distribution
+ 064   Machinery, Miscellaneous
+ 065   Machinery: SIC 35
+ 066   Marine Vessels, Commercial
+ 067   Marine Vessels, Military
+ 068   Mineral Processes: SIC 32
+ 069   Mineral Products
+ 070   Mining and Quarrying: SIC 14
+ 071   Miscellaneous
+ 072   Miscellaneous Industrial
+ 073   Miscellaneous Manufacturing Industries
+ 074   Miscellaneous Non-industrial: Commercial
+ 075   Miscellaneous Non-industrial: Consumer
+ 076   Miscellaneous Non-industrial: Consumer and Commercial
+ 077   Miscellaneous Polymers
+ 078   Miscellaneous Processes
+ 079   Miscellaneous Processes (Chemicals)
+ 080   Miscellaneous Repair Shops
+ 081   Miscellaneous Resins
+ 082   Munitions Detonation
+ 083   NGTS
+ 084   Off-highway 2-stroke Gasoline Engines
+ 085   Off-highway 4-stroke Gasoline Engines
+ 086   Off-highway Diesel Engines
+ 087   Off-highway LPG-fueled Engines
+ 088   Off-highway Vehicle Diesel
+ 089   Off-highway Vehicle Gasoline, 2-Stroke
+ 090   Off-highway Vehicle Gasoline, 4-Stroke
+ 091   Oil and Gas Exploration and Production
+ 092   Oil and Gas Production
+ 093   On-site Incineration
+ 094   Open Burning
+ 095   Organic Chemical Storage
+ 096   Organic Chemical Transport
+ 097   Organic Chemical Transportation
+ 098   Organic Solvent Evaporation
+ 099   Other Combustion
+ 100   Other Combustion - as Event
+ 101   Paint Strippers
+ 102   Paved Roads
+ 103   Petroleum and Petroleum Product Storage
+ 104   Petroleum and Petroleum Product Transport
+ 105   Petroleum Industry
+ 106   Petroleum Liquids Storage (non-Refinery)
+ 107   Petroleum Product Storage at Refineries
+ 108   Petroleum Refining: SIC 29
+ 109   Photo Equip/Health Care/Labs/Air Condit/SwimPools
+ 110   Photographic Film Manufacturing
+ 111   Pleasure Craft
+ 112   Primary Metal Production
+ 113   Primary Metal Production: SIC 33
+ 114   Printing and Publishing
+ 115   Printing/Publishing
+ 116   Pulp and Paper and Wood Products
+ 117   Railroad Equipment
+ 118   Residential
+ 119   Rotary Wing Aircraft L & TO Exhaust
+ 120   Rubber and Miscellaneous Plastics Products
+ 121   Rubber/Plastics
+ 122   Rubber/Plastics: SIC 30
+ 123   Scrap and Waste Materials
+ 124   Secondary Metal Production
+ 125   Secondary Metal Production: SIC 33
+ 126   Site Remediation
+ 127   Soil and Groundwater Remediation
+ 128   Solid Waste Disposal - Commercial/Institutional
+ 129   Solid Waste Disposal - Government
+ 130   Solid Waste Disposal - Industrial
+ 131   Space Heaters
+ 132   Styrene or Methacrylate Based Resins
+ 133   Surface Coating
+ 134   Surface Coating Operations
+ 135   Swimming Pools
+ 136   Textile Products
+ 137   Total Area Source Fuel Combustion
+ 138   Transportation and Marketing of Petroleum Products
+ 139   Transportation Equipment
+ 140   TSDFs
+ 141   unknown non-US source
+ 142   Unpaved Roads
+ 143   Vinyl-based Resins
+ 144   Wastewater Treatment
+ 145   Wild Animals Waste Emissions
+ 146   Wood Products: SIC 24

@@ -1,0 +1,17 @@
+ 01   Brick Kilns
+ 02   Domestic Ammonia
+ 03   External Combustion Boilers
+ 04   Industrial Processes
+ 05   Internal Combustion Engines
+ 06   LPG Distribution
+ 07   MACT Source Categories
+ 08   Miscellaneous Area Sources
+ 09   Mobile Sources
+ 10   Natural Sources
+ 11   Petroleum and Solvent Evaporation
+ 12   Solvent Utilization
+ 13   Stationary Source Fuel Combustion
+ 14   Storage and Transport
+ 15   very misc
+ 16   Waste Disposal
+ 17   Waste Disposal, Treatment, and Recovery

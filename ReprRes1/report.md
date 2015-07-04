@@ -8,7 +8,7 @@ Giovanni Fossati
 Report for the first assignment of the [_Reproducible Research_](https://www.coursera.org/course/repdata) 
 course of the _Coursera/JHSPH Data Science Specialization_.
 
-The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1)
+The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1).   
 The README file in the repository illustrates the goals set for this project.
 
 
@@ -24,14 +24,51 @@ library("reshape2")
 library("xtable")
 ```
 
+<hr class="thin_separator">
+<a name="INTRODUCTION"></a>
+
+## INTRODUCTION
+
+It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a
+[Fitbit](http://www.fitbit.com), [Nike Fuelband](http://www.nike.com/us/en_us/c/nikeplus-fuelband), or
+[Jawbone Up](https://jawbone.com/up). 
+
+These type of devices are part of the "quantified self" movement -- a group of enthusiasts who take
+measurements about themselves regularly to improve their health, to find patterns in their
+behavior, or because they are tech geeks. But these data remain under-utilized both because the
+raw data are hard to obtain and there is a lack of statistical methods and software for
+processing and interpreting the data.
+
+This assignment makes use of data from a personal activity monitoring device. 
+This device collects data at 5 minute intervals through out the day. 
+The data consists of two months of data from an anonymous individual collected during the months
+of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
+
 
 <hr class="thin_separator">
-<a name="REPROCESSING"></a>
+<a name="THE_DATA"></a>
 
 ## LOADING AND PREPROCESSING THE DATA
 
-The dataset is read-in from the file into a data frame `main` and a few new variables related 
-to time are added:
+The data were downloaded from the course web site:
+
+* Dataset: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip) [52K]
+
+
+```r
+main <- read.csv("data/activity.csv.gz")
+```
+
+The dataset comprises __17568__ observations of the following variables:
+
+* __steps__: Number of steps taking in a 5-minute interval (missing values are coded as `NA`)
+* __date__: The date on which the measurement was taken in YYYY-MM-DD format
+* __interval__: Identifier for the 5-minute interval in which measurement was taken
+
+
+### New Variables
+
+We added a few new variables related to time:
 
 * __fullTime__: combines `date` and `interval` (reformatted).
 * __hour__: `interval` is converted to a `HH:MM` format, of class `POSIXct` (because of `ggplot`).
@@ -42,8 +79,6 @@ to time are added:
 
 
 ```r
-main <- read.csv("data/activity.csv.gz")
-
 main$fullTime <- strptime(paste(main$date,sprintf("%04d",main$interval),sep=" "), "%F %H%M")
 main$hour <- as.POSIXct(strptime(sprintf("%04d",main$interval), "%H%M"))
 main$dayName <- weekdays(main$fullTime)
@@ -71,7 +106,7 @@ str(main)
 #  $ chunk    : Factor w/ 4 levels "00to06","06to12",..: 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-#### Checks on `NA` and valid `steps` entries
+### Checks on `NA` and valid `steps` entries
 
 A few basic checks of the data completeness by day, creating a data frame with:
 
@@ -89,6 +124,7 @@ daily.stats <- ddply(main, .(date), summarize,
                      nGood.All = sum(!is.na(steps)),
                      nGood.Not0 = sum(!is.na(steps) & steps>0), 
                      nSteps = sum(steps))
+
 table(daily.stats$nNA)
 # 
 #   0 288 
@@ -119,8 +155,8 @@ the morning and afternoon period.
 
 ```r
 ddply(main, .(chunk), summarize, Ndata.gt.0=sum(!is.na(steps) & steps>0),
-      Ntot=length(steps[!is.na(steps)]),
-      fraction=sprintf("%6.2f %%",sum(!is.na(steps) & steps>0)/length(steps[!is.na(steps)])*100.))
+      Ntot = length(steps[!is.na(steps)]),
+      fraction = sprintf("%6.2f %%",sum(!is.na(steps) & steps>0)/length(steps[!is.na(steps)])*100.))
 #    chunk Ndata.gt.0 Ntot fraction
 # 1 00to06        148 3816   3.88 %
 # 2 06to12       1642 3816  43.03 %
@@ -210,11 +246,12 @@ The next two plots show the _activity_ averaged over all days.
 The two plots are identical, except that on the second one we show 
 $\langle steps\rangle/\sqrt{N_{data}}$ errorbars.
 
+
 ```r
 gm.v1 <- ggplot(ts.ByHour, aes(hour, Avrg)) + theme_bw() + 
-    geom_line(lty=1, col="red2") + 
-    labs(title="Activity (steps/5min) Averaged over all days") + 
-    labs(x="Time during the day") + labs(y="Mean number of steps") 
+            geom_line(lty=1, col="red2") + 
+            labs(title="Activity (steps/5min) Averaged over all days") + 
+            labs(x="Time during the day") + labs(y="Mean number of steps") 
 
 gm.v1 
 ```
@@ -316,18 +353,26 @@ rbind(Ntot,Nbad)
 
 
 ```r
-df <- data.frame(daily.stats[,c(1,2)],flag=ifelse(daily.stats$nNA==0,1,0), 
-                 dayF=factor(weekdays(as.Date(daily.stats$date)), levels=day.names, ordered=TRUE))
+df <- data.frame(daily.stats[,c(1,2)], flag = ifelse(daily.stats$nNA == 0,1,0), 
+                 dayF = factor(weekdays(as.Date(daily.stats$date)), 
+                 levels = day.names, 
+                 ordered = TRUE))
 mat <- matrix(c(df$flag,-1,-1),nrow=7)
-image(x=1:7, y=1:9, mat[,ncol(mat):1],col=c("grey80","#DD4444","#55CC55"), 
-      xaxt="n", yaxt="n", ylab="", xlab="", 
-      main="matrix plot of 'good' and 'bad' days", cex.main=0.9)
+```
+
+
+```r
+image(x=1:7, y=1:9, mat[,ncol(mat):1],
+      col=c("grey80","#DD4444","#55CC55"), 
+      xaxt = "n", yaxt = "n", ylab = "", xlab = "", 
+      main = "matrix plot of 'good' and 'bad' days", cex.main = 0.9)
+
 grid(nx=7,ny=9, col="white")
 axis( 1, at=1:7, labels=c("m","tu","w","th","f","s","su"), las= 1, padj=-1, tcl=0 )
 axis( 2, at=1:9, labels=paste("wk",9:1,sep=" "), las=1, tcl=0, hadj=0.7 )
 ```
 
-<img src="figures/plot-goodbad-days-matrix-1.png" title="" alt="" style="display: block; margin: auto;" />
+<img src="figures/goodbad-days-matrix-plot-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 #### An _imputing_ strategy
 

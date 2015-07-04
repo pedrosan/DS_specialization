@@ -40,7 +40,7 @@ opts_chunk$set(message = FALSE,
 Report for the first assignment of the [_Reproducible Research_](https://www.coursera.org/course/repdata) 
 course of the _Coursera/JHSPH Data Science Specialization_.
 
-The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1)
+The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1).   
 The README file in the repository illustrates the goals set for this project.
 
 
@@ -55,14 +55,50 @@ library("reshape2")
 library("xtable")
 ```
 
+<hr class="thin_separator">
+<a name="INTRODUCTION"></a>
+
+## INTRODUCTION
+
+It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a
+[Fitbit](http://www.fitbit.com), [Nike Fuelband](http://www.nike.com/us/en_us/c/nikeplus-fuelband), or
+[Jawbone Up](https://jawbone.com/up). 
+
+These type of devices are part of the "quantified self" movement -- a group of enthusiasts who take
+measurements about themselves regularly to improve their health, to find patterns in their
+behavior, or because they are tech geeks. But these data remain under-utilized both because the
+raw data are hard to obtain and there is a lack of statistical methods and software for
+processing and interpreting the data.
+
+This assignment makes use of data from a personal activity monitoring device. 
+This device collects data at 5 minute intervals through out the day. 
+The data consists of two months of data from an anonymous individual collected during the months
+of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.
+
 
 <hr class="thin_separator">
-<a name="REPROCESSING"></a>
+<a name="THE_DATA"></a>
 
 ## LOADING AND PREPROCESSING THE DATA
 
-The dataset is read-in from the file into a data frame `main` and a few new variables related 
-to time are added:
+The data were downloaded from the course web site:
+
+* Dataset: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip) [52K]
+
+```{r data-read}
+main <- read.csv("data/activity.csv.gz")
+```
+
+The dataset comprises __`r nrow(main)`__ observations of the following variables:
+
+* __steps__: Number of steps taking in a 5-minute interval (missing values are coded as `NA`)
+* __date__: The date on which the measurement was taken in YYYY-MM-DD format
+* __interval__: Identifier for the 5-minute interval in which measurement was taken
+
+
+### New Variables
+
+We added a few new variables related to time:
 
 * __fullTime__: combines `date` and `interval` (reformatted).
 * __hour__: `interval` is converted to a `HH:MM` format, of class `POSIXct` (because of `ggplot`).
@@ -71,9 +107,7 @@ to time are added:
 * __dayFlag__: a 2-level factor to more easily recognize week [0] and week end [1] days.
 * __chunk__: a 4-level factor marking four 6-hours periods during a day.
 
-```{r}
-main <- read.csv("data/activity.csv.gz")
-
+```{r add_variables}
 main$fullTime <- strptime(paste(main$date,sprintf("%04d",main$interval),sep=" "), "%F %H%M")
 main$hour <- as.POSIXct(strptime(sprintf("%04d",main$interval), "%H%M"))
 main$dayName <- weekdays(main$fullTime)
@@ -90,7 +124,7 @@ The resulting data frame has the following structure:
 str(main)
 ```
 
-#### Checks on `NA` and valid `steps` entries
+### Checks on `NA` and valid `steps` entries
 
 A few basic checks of the data completeness by day, creating a data frame with:
 
@@ -107,6 +141,7 @@ daily.stats <- ddply(main, .(date), summarize,
                      nGood.All = sum(!is.na(steps)),
                      nGood.Not0 = sum(!is.na(steps) & steps>0), 
                      nSteps = sum(steps))
+
 table(daily.stats$nNA)
 ```
 
@@ -130,8 +165,8 @@ values not surprisingly shows a very low fraction for the night period and highe
 the morning and afternoon period.
 ```{r}
 ddply(main, .(chunk), summarize, Ndata.gt.0=sum(!is.na(steps) & steps>0),
-      Ntot=length(steps[!is.na(steps)]),
-      fraction=sprintf("%6.2f %%",sum(!is.na(steps) & steps>0)/length(steps[!is.na(steps)])*100.))
+      Ntot = length(steps[!is.na(steps)]),
+      fraction = sprintf("%6.2f %%",sum(!is.na(steps) & steps>0)/length(steps[!is.na(steps)])*100.))
 ```
 
 ```{r histogram-ngood-bychunk, fig.height=3, fig.width=7}
@@ -166,7 +201,7 @@ Here is the full summary, followed by the distribution.
 summary(daily.stats$nSteps)
 ```
 
-```{r histogram, fig.height=4, fig.width=5}
+```{r histogram, fig.height=5, fig.width=6}
 hist(daily.stats$nSteps, breaks=seq(0,30000,by=2500), col="orange", 
      main="Distribution of Total Daily Steps", xlab="Total Daily Steps", ylab="N_{days}")
 ```
@@ -207,15 +242,16 @@ ts.ByHour$Sd[ts.ByHour$N<2] <- NA
 The next two plots show the _activity_ averaged over all days.  
 The two plots are identical, except that on the second one we show 
 $\langle steps\rangle/\sqrt{N_{data}}$ errorbars.
-```{r all-averaged, fig.height=4, fig.width=6}
+
+```{r all-averaged, fig.height=5, fig.width=7}
 gm.v1 <- ggplot(ts.ByHour, aes(hour, Avrg)) + theme_bw() + 
-    geom_line(lty=1, col="red2") + 
-    labs(title="Activity (steps/5min) Averaged over all days") + 
-    labs(x="Time during the day") + labs(y="Mean number of steps") 
+            geom_line(lty=1, col="red2") + 
+            labs(title="Activity (steps/5min) Averaged over all days") + 
+            labs(x="Time during the day") + labs(y="Mean number of steps") 
 
 gm.v1 
 ```    
-```{r all-averaged-with-errorbars, fig.height=4, fig.width=6}
+```{r all-averaged-with-errorbars, fig.height=5, fig.width=7}
 gm.v1 + geom_errorbar(aes(ymin=ts.ByHour$Avrg-ts.ByHour$Sd/sqrt(ts.ByHour$N),
                           ymax=ts.ByHour$Avrg+ts.ByHour$Sd/sqrt(ts.ByHour$N)), 
                       color="red2", alpha="0.5") 
@@ -290,13 +326,20 @@ Nbad <- tapply(main$steps, main$dayFactor, function(x){length(x[is.na(x)])/288},
 rbind(Ntot,Nbad)
 ```
 
-```{r plot-goodbad-days-matrix, fig.width=5, fig.height=4}
-df <- data.frame(daily.stats[,c(1,2)],flag=ifelse(daily.stats$nNA==0,1,0), 
-                 dayF=factor(weekdays(as.Date(daily.stats$date)), levels=day.names, ordered=TRUE))
+```{r goodbad-days-matrix}
+df <- data.frame(daily.stats[,c(1,2)], flag = ifelse(daily.stats$nNA == 0,1,0), 
+                 dayF = factor(weekdays(as.Date(daily.stats$date)), 
+                 levels = day.names, 
+                 ordered = TRUE))
 mat <- matrix(c(df$flag,-1,-1),nrow=7)
-image(x=1:7, y=1:9, mat[,ncol(mat):1],col=c("grey80","#DD4444","#55CC55"), 
-      xaxt="n", yaxt="n", ylab="", xlab="", 
-      main="matrix plot of 'good' and 'bad' days", cex.main=0.9)
+```
+
+```{r goodbad-days-matrix-plot, fig.width=6, fig.height=5}
+image(x=1:7, y=1:9, mat[,ncol(mat):1],
+      col=c("grey80","#DD4444","#55CC55"), 
+      xaxt = "n", yaxt = "n", ylab = "", xlab = "", 
+      main = "matrix plot of 'good' and 'bad' days", cex.main = 0.9)
+
 grid(nx=7,ny=9, col="white")
 axis( 1, at=1:7, labels=c("m","tu","w","th","f","s","su"), las= 1, padj=-1, tcl=0 )
 axis( 2, at=1:9, labels=paste("wk",9:1,sep=" "), las=1, tcl=0, hadj=0.7 )
@@ -342,7 +385,7 @@ ts.ByDay.ByHour <- ddply(main.m2, .(dayFactor, hour), summarize,
 str(ts.ByDay.ByHour)
 ```
 
-```{r plot-seven, fig.width=5, fig.height=8}
+```{r plot-seven, fig.width=6, fig.height=9}
 gm.ByDay.ByHour <- ggplot(ts.ByDay.ByHour, aes(hour, Avrg))
 gm.ByDay.ByHour + theme_bw() + theme(legend.position="none") +
     geom_line(aes(color=dayFactor),lty=1) +
@@ -370,7 +413,7 @@ ts.ByGroup.ByHour <- ddply(main.m2, .(dayGroup, hour), summarize,
                            Sd=sd(steps), 
                            N=length(steps))
 ```
-```{r plot-bygroup, fig.width=5, fig.height=5}
+```{r plot-bygroup, fig.width=6, fig.height=6}
 ggplot(ts.ByGroup.ByHour, aes(hour, Avrg)) + theme_bw() + theme(legend.position="none") +
     geom_line(aes(color=dayGroup),lty=1) +
     labs(title="activity averaged over time, by type of day") + 
@@ -467,7 +510,7 @@ ts.ByFlag.ByHour <- ddply(main.m2, .(dayFlag, hour), summarize, Avrg=mean(steps)
 str(ts.ByFlag.ByHour)
 ```
 
-```{r plot-two, fig.width=5, fig.height=4}
+```{r plot-two, fig.width=6, fig.height=5}
 gm.ByFlag.ByHour <- ggplot(ts.ByFlag.ByHour, aes(hour, Avrg))
 gm.ByFlag.ByHour + theme_bw() + theme(legend.position="none") +
     geom_line(aes(color=dayFlag),lty=1) +

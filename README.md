@@ -29,3 +29,7 @@ A __report__ is available for some of them, hosted under pedrosa.github.io using
   * [REPORT](http://pedrosan.github.io/DS_specialization/ML/)
   * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ML))
 
+* Developing Data Products ([course page](https://www.coursera.org/course/devdataprod)):
+  * [SLIDES](http://pedrosan.github.io/DS_specialization/DevDataProd/)
+  * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/DevDataProd))
+

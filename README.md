@@ -7,7 +7,7 @@ A __report__ is available for some of them, hosted under pedrosa.github.io using
 
 * R programming ([course page](https://www.coursera.org/course/rprog)): [repository](https://github.com/pedrosan/DS_specialization/tree/master/Rprogr)
 
-* Getting and Cleaning Data ([course page](https://www.coursera.org/course/getdata)): [repository](https://github.com/pedrosan/DS_specialization/tree/master/GC2)
+* Getting and Cleaning Data ([course page](https://www.coursera.org/course/getdata)): [repository](https://github.com/pedrosan/DS_specialization/tree/master/GC)
 
 * Exploratory Data Analysis ([course page](https://www.coursera.org/course/exdata)):
   * [repository for assignment 1](https://github.com/pedrosan/DS_specialization/tree/master/EDA1)

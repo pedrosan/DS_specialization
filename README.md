@@ -12,7 +12,9 @@ Data Science Specialization courses.
   * [repository for assignment 1](https://github.com/pedrosan/DS_specialization/tree/master/EDA1)
   * [repository for assignment 2](https://github.com/pedrosan/DS_specialization/tree/master/EDA2)
 
-* Regression Models ([course page](https://www.coursera.org/course/regmods)) (analysis of cars dataset): [repository](https://github.com/pedrosan/DS_specialization/tree/master/MTcars)
+* Regression Models ([course page](https://www.coursera.org/course/regmods)) (analysis of cars dataset):
+  * [REPORT](http://pedrosan.github.io/DS_specialization/MTcars/)
+  * [repository](https://github.com/pedrosan/DS_specialization/tree/master/MTcars)
 
 * Reproducible Research ([course page](https://www.coursera.org/course/repdata)) (Human Activity Data):
   * [REPORT](http://pedrosan.github.io/DS_specialization/ReprRes1/)

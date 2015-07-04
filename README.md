@@ -17,9 +17,13 @@ A __report__ is available for some of them, hosted under pedrosa.github.io using
   * [REPORT](http://pedrosan.github.io/DS_specialization/MTcars/)
   * [repository](https://github.com/pedrosan/DS_specialization/tree/master/MTcars)
 
-* Reproducible Research ([course page](https://www.coursera.org/course/repdata)) (Human Activity Data):
-  * [REPORT](http://pedrosan.github.io/DS_specialization/ReprRes1/)
-  * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1))
+* Reproducible Research ([course page](https://www.coursera.org/course/repdata)) 
+  * Human Activity Data:
+    * [REPORT](http://pedrosan.github.io/DS_specialization/ReprRes1/)
+    * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1))
+  * Impact of Major Storms
+    * [REPORT](http://pedrosan.github.io/DS_specialization/ReprRes2/)
+    * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes2))
 
 * Practical Machine Learning ([course page](https://www.coursera.org/course/predmachlearn)) (Human Activity Data, gym exercise): 
   * [REPORT](http://pedrosan.github.io/DS_specialization/ML/)

@@ -1,10 +1,18 @@
-# Machine-Learning-based Assessment of the quality of weight-lifting exercises
+# Machine-Learning-based Assessment of The Quality of Weight-lifting Exercises
 Giovanni Fossati  
 
 
 
 
 
+
+
+## PREAMBLE
+
+Report for the first assignment of the [_Machine Learning_](https://www.coursera.org/course/repdata) 
+course of the _Coursera/JHSPH Data Science Specialization_.
+
+The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/ML)
 
 
 ## INTRODUCTION
@@ -57,7 +65,7 @@ between categories of exercise quality, that can be related to the slight differ
 of the body and weight dumbbell, and that are apparently very well picked out by the algorithm.
 
 
-<hr class="separator">
+<hr class="thin_separator">
 <a name="THE_DATA_SET"></a>
 
 ## THE DATA SET
@@ -112,7 +120,7 @@ Fortunately the two types of variables can be easily separated on the basis of t
 which has value `no` for entries corresponding to timed data, and `yes` for their statistical summaries over each exercise window.
 
 
-<hr class="separator">
+<hr class="thin_separator">
 <a name="DATA_PREPARATION"></a>
 
 ## DATA PREPARATION
@@ -209,7 +217,7 @@ The expectation is that the ML algorithm will be able to identify them and build
 <img src="figures/plots-more_2-1.png" title="" alt="" style="display: block; margin: auto;" />
 
 
-<hr class="separator">
+<hr class="thin_separator">
 <a name="FEATURE_SELECTION"></a>
 
 ## ABOUT FEATURE SELECTION
@@ -243,7 +251,7 @@ selected among those with high correlation.
 The actual predictors filtering was done applying this method just on the _training_ subset (see below).
 
 
-<hr class="separator">
+<hr class="thin_separator">
 <a name="DATA_SPLITTING"></a>
 
 ## DATA SPLITTING: "NEW" _TRAINING_ AND _TESTING_ SUBSETS
@@ -315,7 +323,7 @@ alt.testing.cut75 <- alt.testing[, -(i.fC.75.alt+1)]
 
 
 
-<hr class="separator">
+<hr class="thin_separator">
 <a name="MODELING"></a>
 
 ## MODELING

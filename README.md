@@ -15,10 +15,10 @@ Data Science Specialization courses.
 * Regression Models ([course page](https://www.coursera.org/course/regmods)) (analysis of cars dataset): [repository](https://github.com/pedrosan/DS_specialization/tree/master/MTcars)
 
 * Reproducible Research ([course page](https://www.coursera.org/course/repdata)) (Human Activity Data):
-  [REPORT](http://pedrosan.github.io/DS_specialization/ReprRes1/)
-  ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1))
+  * [REPORT](http://pedrosan.github.io/DS_specialization/ReprRes1/)
+  * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ReprRes1))
 
 * Practical Machine Learning ([course page](https://www.coursera.org/course/predmachlearn)) (Human Activity Data, gym exercise): 
-  [REPORT](http://pedrosan.github.io/DS_specialization/ML/)
-  ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ML))
+  * [REPORT](http://pedrosan.github.io/DS_specialization/ML/)
+  * ([repository](https://github.com/pedrosan/DS_specialization/tree/master/ML))
 

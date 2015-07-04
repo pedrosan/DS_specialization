@@ -1,4 +1,6 @@
 
+## ---- my_functions
+
 colors.am <- c("blue2","red2"); 
 colors.fill.am <- c("skyblue2","red"); 
 cvec.am <- ifelse(mtcars$am==0, colors.am[1], colors.am[2])
@@ -67,28 +69,18 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, color.bg=FALSE, ..
     txt <- format(c(r, 0.123456789), digits = digits)[1]
     txt <- paste0(prefix, txt)
     if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
-    # cvec.bg <- c(rgb(1.0, 0.5, 0.5) , rgb(0.5, 0.5, 1.0), rgb(0.5, 1.0, 0.5))
+
     cvec.bg <- c(rgb(1.0, 0.8, 0.9) , rgb(0.9, 0.9, 1.0), rgb(0.8, 1.0, 0.8))
     cvec.text <- c("red", "blue", rgb(0.0, 0.67, 0.0))
     i.color <- 1+(r>0.7)+(r>0.8)
     if( color.bg ) {
        ll <- par("usr") 
        rect(ll[1], ll[3], ll[2], ll[4], col=cvec.bg[i.color])
-       # text(0.5, 0.5, txt, cex = cex.cor * r, col="white")
        text(0.5, 0.5, txt, cex = cex.cor * r, col=cvec.text[i.color])
     } else {
-       # text(0.5, 0.5, txt, cex = cex.cor * r, col= 2+(r>0.7)+(r>0.8))
        text(0.5, 0.5, txt, cex = cex.cor * r, col=cvec.text[i.color])
     }
 }
-
-# panel.lmline = function (x, y, col = par("col"), bg = NA, pch = par("pch"), cex = 1, col.smooth = "red", ...) {
-#     points(x, y, pch = pch, col = col, bg = bg, cex = cex)
-#     ok <- is.finite(x) & is.finite(y)
-#     if (any(ok)) 
-#        abline(lm(y[ok] ~ x[ok]), 
-#            col = col.smooth, ...)
-# }
 
 mypanel <- function(x, y, ...){
    # count <<- count+1 
@@ -96,10 +88,8 @@ mypanel <- function(x, y, ...){
    cvec.bg <- c(rgb(1.0, 0.8, 0.9) , rgb(0.9, 0.9, 1.0), rgb(0.8, 1.0, 0.8))
    cvec.border <- c("red", "blue", rgb(0.0, 0.67, 0.0))
    r <- abs(cor(x, y))
-   #bg <- 1+(r>0.7)+(r>0.8)
    i.color <- 1+(r>0.7)+(r>0.8)
    ll <- par("usr") 
-   #rect(ll[1], ll[3], ll[2], ll[4], col=cvec.bg[i.color], border=cvec.border[i.color], lwd=2)
    rect(ll[1], ll[3], ll[2], ll[4], border=cvec.border[i.color], lwd=3)
    points(x, y, ... ) 
    ok <- is.finite(x) & is.finite(y)
@@ -115,12 +105,6 @@ addPredConf <- function(fit, data="mtcars", x="wt", col=c("blue","red")) {
     lines(cbind(df$x, df$fit)[df$am==0,], col=col[1], lty=1)
     lines(cbind(df$x, df$lwr)[df$am==0,], col=col[1], lty=2)
     lines(cbind(df$x, df$upr)[df$am==0,], col=col[1], lty=2)
-    #lines(cbind(df$x, df$fit)[df$am==0,], col=col[1], lty=1)
-    #lines(cbind(df$x, df$lwr)[df$am==0,], col=col[1], lty=2)
-    #lines(cbind(df$x, df$upr)[df$am==0,], col=col[1], lty=2)
-    #lines(cbind(df$x, df$fit)[df$am==1,], col=col[2], lty=1)
-    #lines(cbind(df$x, df$lwr)[df$am==1,], col=col[2], lty=2)
-    #lines(cbind(df$x, df$upr)[df$am==1,], col=col[2], lty=2)
 }
 
 addPredConf.am <- function(fit, data="mtcars", x="wt", col=c("blue","red")) {
@@ -153,3 +137,6 @@ addPredConf.cyl <- function(fit, data="mtcars", x="wt", col=c("blue","green","re
     lines(cbind(df$x, df$lwr)[df$grp==8,], col=col[3], lty=2)
     lines(cbind(df$x, df$upr)[df$grp==8,], col=col[3], lty=2)
 }
+
+## ---- end-of-my_functions
+

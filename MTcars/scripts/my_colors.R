@@ -1,4 +1,6 @@
 
+## ---- my_colors
+
 colors.am <- c("blue2","red4"); 
 colors.fill.am <- c("skyblue2","orangered"); 
 pch.am <- c(21, 21)
@@ -15,5 +17,5 @@ pch.cyl <- c(24, 24, 24)
 cvec.cyl <- ifelse(mtcars$cyl==4, colors.cyl[1], ifelse(mtcars$cyl==6, colors.cyl[2], colors.cyl[3]))
 cvec.fill.cyl <- ifelse(mtcars$cyl==4, colors.fill.cyl[1], ifelse(mtcars$cyl==6, colors.fill.cyl[2], colors.fill.cyl[3]))
 
-# cfit1 <- "firebrick2"
-# cfit2 <- rgb(1.0, 0.84, 0.0, 0.5)
+## ---- end-of-my_colors
+

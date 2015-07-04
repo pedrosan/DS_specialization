@@ -30,16 +30,6 @@ opts_chunk$set(message = FALSE,
                fig.align = 'center', 
                dpi = 100, 
                fig.path = 'figures/')
-
-# options(xtable.type = 'html')
-# knit_hooks$set(inline = function(x) {
-#   if(is.numeric(x)) {
-#     round(x, getOption('digits'))
-#   } else {
-#     paste(as.character(x), collapse = ', ')
-#   }
-# })
-# knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 
 ```{r loadLibs, echo=FALSE, cache=FALSE}
@@ -58,8 +48,8 @@ str(mtcars)
 
 set.seed(2468)
 
-source("./scripts/my_defs.R")
-source("./scripts/set_colors.R")
+source("./scripts/my_functions.R")
+source("./scripts/my_colors.R")
 
 # layout1 : 1 | 1 / 2
 shape1 <- c(1, 1, 1, 0, 2, 2, 0)
@@ -122,8 +112,8 @@ wt2hp <- lm(I(wt - 2) ~ I(hp/100 - 1), data = mtcars)
 ### PREAMBLE
 
 Report for assignment of the [_Regression Models_](https://www.coursera.org/course/regmods) 
-course of the Coursera/JHSPH Data Science Specialization.   
-The source files are posted at [https://github.com/pedrosan/ReprodRes1](https://github.com/pedrosan/MTcars).
+course of the Coursera/JHSPH Data Science Specialization.    
+The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/MTcars).
 
 
 ## INTRODUCTION
@@ -318,7 +308,10 @@ It is important to keep in mind that `wt` and `hp` are correlated, with a slope 
 and therefore the increase in gas consumption will generally be a combination of the two components growing in similar proportions.
 
 
-## APPENDIX : SUPPLEMENTARY MATERIAL
+<hr class="separator">
+<a name="SUPPLEMENTARY_MATERIAL"></a>
+
+## SUPPLEMENTARY MATERIAL
 
 ### EXPLORATORY ANALYSIS : GENERAL TRENDS AND CORRELATIONS
 
@@ -512,11 +505,34 @@ plot(m2c2, which=c(1,2,5), add.smooth=FALSE, pch=pch.am, col=cvec.am, bg=cvec.fi
      labels.id=1:nrow(mtcars))
 ```
 
-<hr />
 
-```{r sessionInfo}
-# sessionInfo()
+<hr class="separator">
+<a name="APPENDIX"></a>
+
+# APPENDIX
+
+### Some handy functions
+
+```{r echo = FALSE, cache = FALSE}
+read_chunk("./scripts/my_functions.R")
 ```
+
+Additional locally defined functions, sourced from the external file.
+```{r eval = FALSE, cache = FALSE}
+<<my_functions>>
+```
+
+
+### Color definitions
+
+```{r echo = FALSE, cache = FALSE}
+read_chunk("./scripts/my_colors.R")
+```
+
+```{r eval = FALSE, cache = FALSE}
+<<my_colors>>
+```
+
 
 ## R Session Info
 

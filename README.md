@@ -3,6 +3,7 @@
 Cleaned and consolidated repository for the projects and assignments done for the Coursera/JHSPH
 Data Science Specialization courses.
 
+A __report__ is available for some of them, hosted under pedrosa.github.io using the _pages_ feature.
 
 * R programming ([course page](https://www.coursera.org/course/rprog)): [repository](https://github.com/pedrosan/DS_specialization/tree/master/Rprogr)
 

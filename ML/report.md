@@ -9,7 +9,7 @@ Giovanni Fossati
 
 ## PREAMBLE
 
-Report for the first assignment of the [_Machine Learning_](https://www.coursera.org/course/repdata) 
+Report for the first assignment of the [_Practical Machine Learning_](https://www.coursera.org/course/predmachlearn)
 course of the _Coursera/JHSPH Data Science Specialization_.
 
 The source files are posted on [GitHub](https://github.com/pedrosan/DS_specialization/tree/master/ML)

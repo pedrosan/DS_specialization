@@ -16,7 +16,6 @@ output   :
 
 ```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
 require(knitr)
-opts_chunk$set(echo=TRUE, fig.path='figures/')
 options(width = 100, 
         digits = 7)
 opts_chunk$set(message = FALSE, 

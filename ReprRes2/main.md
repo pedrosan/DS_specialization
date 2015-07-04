@@ -135,7 +135,7 @@ col.cl$newclass2
 
 system.time( data <- read.csv("data/StormData.csv.bz2", colClasses= col.cl$newclass2, nrows=1300000, strip.white=TRUE) )
 #    user  system elapsed 
-#  57.741   0.584  58.461
+#  51.653   0.184  51.880
 # data2 <- readRDS("data/df_good_saved.rds")
 ```
 
@@ -197,17 +197,11 @@ some of the potentially useful variables, as well as created ones for further co
 data$REMARKS <- gsub("^ *", "", data$REMARKS, perl=TRUE)
 data$REMARKS <- gsub(" *$", "", data$REMARKS, perl=TRUE)
 data$REMARKS <- gsub("[ ]{2,}", " ", data$REMARKS, perl=TRUE)
-```
 
-
-```r
 data$EVTYPE <- gsub("^ *", "", data$EVTYPE, perl=TRUE)
 data$EVTYPE <- gsub(" *$", "", data$EVTYPE, perl=TRUE)
 data$EVTYPE <- gsub("[ ]{2,}", " ", data$EVTYPE, perl=TRUE)
-```
 
-
-```r
 data$COUNTYNAME <- toupper(data$COUNTYNAME)
 data$EVTYPE     <- toupper(data$EVTYPE)
 data$PROPDMGEXP <- toupper(data$PROPDMGEXP)
@@ -1046,12 +1040,12 @@ sessionInfo()
 # [1] grid      stats     graphics  grDevices utils     datasets  methods   base     
 # 
 # other attached packages:
-# [1] ggplot2_1.0.1  reshape2_1.4.1 plyr_1.8.2     knitr_1.10.5  
+# [1] ggplot2_1.0.1  reshape2_1.4.1 plyr_1.8.3     knitr_1.10.5  
 # 
 # loaded via a namespace (and not attached):
-#  [1] MASS_7.3-40      Rcpp_0.11.6      colorspace_1.2-6 digest_0.6.8     evaluate_0.7    
-#  [6] formatR_1.2      gtable_0.1.2     htmltools_0.2.6  labeling_0.3     magrittr_1.5    
-# [11] munsell_0.4.2    proto_0.3-10     rmarkdown_0.6.1  scales_0.2.4     stringi_0.4-1   
-# [16] stringr_1.0.0    tools_3.1.3      yaml_2.1.13
+#  [1] MASS_7.3-41      Rcpp_0.11.6      codetools_0.2-11 colorspace_1.2-6 digest_0.6.8    
+#  [6] evaluate_0.7     formatR_1.2      gtable_0.1.2     htmltools_0.2.6  labeling_0.3    
+# [11] magrittr_1.5     munsell_0.4.2    proto_0.3-10     rmarkdown_0.7    scales_0.2.4    
+# [16] stringi_0.5-5    stringr_1.0.0    tools_3.1.3      yaml_2.1.13
 ```
 ---

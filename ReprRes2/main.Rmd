@@ -184,15 +184,11 @@ some of the potentially useful variables, as well as created ones for further co
 data$REMARKS <- gsub("^ *", "", data$REMARKS, perl=TRUE)
 data$REMARKS <- gsub(" *$", "", data$REMARKS, perl=TRUE)
 data$REMARKS <- gsub("[ ]{2,}", " ", data$REMARKS, perl=TRUE)
-```
 
-```{r clean-2, cache=TRUE}
 data$EVTYPE <- gsub("^ *", "", data$EVTYPE, perl=TRUE)
 data$EVTYPE <- gsub(" *$", "", data$EVTYPE, perl=TRUE)
 data$EVTYPE <- gsub("[ ]{2,}", " ", data$EVTYPE, perl=TRUE)
-```
 
-```{r clean-3, cache=TRUE}
 data$COUNTYNAME <- toupper(data$COUNTYNAME)
 data$EVTYPE     <- toupper(data$EVTYPE)
 data$PROPDMGEXP <- toupper(data$PROPDMGEXP)
@@ -201,7 +197,7 @@ data$CROPDMGEXP <- toupper(data$CROPDMGEXP)
 
 #### Setting "missing" coordinates to _NA_
 
-```{r clean-coords, cache=TRUE}
+```{r clean-coords, cache = FALSE}
 data$LATITUDE[data$LATITUDE <= 0]  <- NA
 data$LONGITUDE[data$LONGITUDE <= 0]  <- NA
 ```
@@ -217,14 +213,14 @@ data$BGN_TIME <- gsub("([0-9])O(.*)([^M])$","\\10\\2\\3", data$BGN_TIME, perl=TR
 It is better to work with properly constructed time variables, hence we convert `BGN_DATE` and 
 `END_DATE` into `POSIXlt` class variables. 
 
-```{r transform-dates, cache=TRUE}
+```{r transform-dates, cache = FALSE}
 # making BGN and END dates dates
 data$BGN_DATE.new <- strptime(as.character(data$BGN_DATE), "%m/%d/%Y %H:%M:%S")
 data$END_DATE.new <- strptime(as.character(data$END_DATE), "%m/%d/%Y %H:%M:%S")
 ```
 
 Finally, we define a _factor_ variable `YEAR`.
-```{r define-year-factor, cache=TRUE}
+```{r define-year-factor, cache = FALSE}
 # create a 4-digit year factor variable
 # data$YEAR <- as.factor(substr(as.character(data$BGN_DATE.new),0,4))
 data$YEAR <- substr(as.character(data$BGN_DATE.new),0,4)
@@ -242,7 +238,7 @@ colnames(data)[sel.columns.n]
 After creating the new data-frame, we rename the newly created time variables to take
 the original names, and sort the data-frame by `BGN_DATE`.
 
-```{r create-good-df, cache=TRUE}
+```{r create-good-df, cache = FALSE}
 good <- data[, sel.columns.n]
 
 colnames(good)[5] <- "BGN_DATE"
